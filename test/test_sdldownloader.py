@@ -1,21 +1,18 @@
 if __name__ == "__main__":
 
     import sys
-    module_path = "/home/ecastillo/repositories/AIpicker"
+    module_path = "/home/ecastillo/repositories/MseedDownloader"
     sys.path.insert(0,module_path)
 
     from obspy.clients.fdsn import Client as FDSN_Client
     from obspy.clients.filesystem.sds import Client as SDS_Client
     from obspy.core.utcdatetime import UTCDateTime
-    from AIpicker.concurrent_downloader.sdl.restrictions import DownloadRestrictions
-    from AIpicker.concurrent_downloader.sdl.restrictions import PreprocRestrictions
-    from AIpicker.concurrent_downloader.sdl.downloader import MseedDownloader
+    from concurrent_downloader.sdl.restrictions import DownloadRestrictions
+    from concurrent_downloader.sdl.restrictions import PreprocRestrictions
+    from concurrent_downloader.sdl.downloader import MseedDownloader
 
 
     client = FDSN_Client('http://sismo.sgc.gov.co:8080')
-    # client = FDSN_Client('http://10.100.100.232:8091')
-    # client = SDS_Client('/mnt/sc232',
-    #                    sds_type='D', format='MSEED',)
 
     dld_restrictions = DownloadRestrictions(network="CM",
                             station="BAR2,RUS,URMC",
